@@ -29,4 +29,4 @@ class CategoryController
         header('Content-Type: application/json; charset=UTF-8');
         return json_encode($data);
     }
-} 
+}

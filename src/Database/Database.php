@@ -15,7 +15,7 @@ class Database
         $host = $_ENV['DB_HOST'] ?? 'localhost';
         $dbname = $_ENV['DB_NAME'] ?? 'scandiweb_test';
         $username = $_ENV['DB_USER'] ?? 'root';
-        $password = $_ENV['DB_PASSWORD'] ?? '';
+        $password = $_ENV['DB_PASSWORD'] ?? 'root';
 
         try {
             $this->connection = new PDO(
@@ -57,4 +57,4 @@ class Database
     {
         return $this->connection->lastInsertId();
     }
-} 
+}

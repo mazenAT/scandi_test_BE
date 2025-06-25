@@ -103,4 +103,4 @@ class Product
             'updated_at' => $row['updated_at'],
         ];
     }
-} 
+}

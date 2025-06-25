@@ -34,4 +34,4 @@ class Category
         $this->db->query($sql, [$name]);
         return (int) $this->db->lastInsertId();
     }
-} 
+}
