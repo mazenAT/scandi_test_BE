@@ -17,14 +17,12 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     // GraphQL endpoint
     $r->post('/graphql', [App\Controller\GraphQL::class, 'handle']);
     
-    // REST API endpoints for items
-    $r->get('/api/items', [App\Controller\ItemController::class, 'getAll']);
-    $r->get('/api/items/{id:\d+}', [App\Controller\ItemController::class, 'getById']);
-    $r->post('/api/items', [App\Controller\ItemController::class, 'create']);
-    $r->put('/api/items/{id:\d+}', [App\Controller\ItemController::class, 'update']);
-    $r->delete('/api/items/{id:\d+}', [App\Controller\ItemController::class, 'delete']);
-    $r->get('/api/items/search', [App\Controller\ItemController::class, 'search']);
-    $r->get('/api/categories', [App\Controller\ItemController::class, 'getCategories']);
+    // REST API endpoints for products (read-only)
+    $r->get('/api/products', [App\Controller\ProductController::class, 'getAll']);
+    $r->get('/api/products/{id}', [App\Controller\ProductController::class, 'getById']);
+    $r->get('/api/products/search', [App\Controller\ProductController::class, 'search']);
+    // REST API endpoint for categories
+    $r->get('/api/categories', [App\Controller\CategoryController::class, 'getAll']);
 });
 
 $routeInfo = $dispatcher->dispatch(
