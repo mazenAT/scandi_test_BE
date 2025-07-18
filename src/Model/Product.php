@@ -72,6 +72,9 @@ class Product
 
     public function getByCategory(string $categoryName): array
     {
+        if (strtolower($categoryName) === 'all') {
+            return $this->getAll();
+        }
         $sql = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE c.name = ? ORDER BY p.created_at DESC";
         $stmt = $this->db->query($sql, [$categoryName]);
         $products = $stmt->fetchAll();
