@@ -18,20 +18,19 @@ if (file_exists($envPath)) {
 }
 
 $allowed_origins = [
+    'https://scandi-test-f5ew8s7c7h-mazens-projects-24ce9492.vercel.app',
     'http://localhost:3000',
     'http://localhost:8080',
-    'https://scandi-test-lhbd64mlm-mazens-projects-24ce9492.vercel.app',
-    'http://scandi-test-lhbd64mlm-mazens-projects-24ce9492.vercel.app',
-    'http://jycwdzlv.infinityfree.com',
-    'https://jycwdzlv.infinityfree.com',
+    'https://scanditest.fwh.is',
+    'http://scanditest.fwh.is',
 ];
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (in_array($origin, $allowed_origins)) {
     header("Access-Control-Allow-Origin: $origin");
+    header('Access-Control-Allow-Credentials: true');
 }
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
-header('Access-Control-Allow-Credentials: true');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
