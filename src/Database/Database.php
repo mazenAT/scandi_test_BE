@@ -14,8 +14,10 @@ class Database
     {
         // Support Railway DATABASE_URL if present
         $databaseUrl = $_ENV['DB_URL'] ?? getenv('DB_URL');
+        error_log('DB_URL=' . $databaseUrl); // Log the raw DB_URL
         if ($databaseUrl) {
             $parts = parse_url($databaseUrl);
+            error_log('DB_URL parts: ' . print_r($parts, true)); // Log the parsed parts
             $host = $parts['host'];
             $dbname = ltrim($parts['path'], '/');
             $username = $parts['user'];
