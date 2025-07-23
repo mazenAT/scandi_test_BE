@@ -12,14 +12,26 @@ class Database
 
     private function __construct()
     {
-        $host = $_ENV['DB_HOST'];
-        $dbname = $_ENV['DB_NAME'];
-        $username = $_ENV['DB_USER'];
-        $password = $_ENV['DB_PASSWORD'];
+        // Support Railway DATABASE_URL if present
+        $databaseUrl = $_ENV['DB_URL'] ?? getenv('DB_URL');
+        if ($databaseUrl) {
+            $parts = parse_url($databaseUrl);
+            $host = $parts['host'];
+            $dbname = ltrim($parts['path'], '/');
+            $username = $parts['user'];
+            $password = $parts['pass'] ?? '';
+            $port = $parts['port'] ?? 3306;
+        } else {
+            $host = $_ENV['DB_HOST'] ?? getenv('DB_HOST');
+            $dbname = $_ENV['DB_NAME'] ?? getenv('DB_NAME');
+            $username = $_ENV['DB_USER'] ?? getenv('DB_USER');
+            $password = $_ENV['DB_PASSWORD'] ?? getenv('DB_PASSWORD');
+            $port = $_ENV['DB_PORT'] ?? getenv('DB_PORT') ?: 3306;
+        }
 
         try {
             $this->connection = new PDO(
-                "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+                "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4",
                 $username,
                 $password,
                 [
