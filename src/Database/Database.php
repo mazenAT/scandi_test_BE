@@ -12,10 +12,10 @@ class Database
 
     private function __construct()
     {
-        $host = $_ENV['DB_HOST'] ?? 'localhost';
-        $dbname = $_ENV['DB_NAME'] ?? 'scandiweb_test';
-        $username = $_ENV['DB_USER'] ?? 'root';
-        $password = $_ENV['DB_PASSWORD'] ?? 'root';
+        $host = $_ENV['DB_HOST'];
+        $dbname = $_ENV['DB_NAME'];
+        $username = $_ENV['DB_USER'];
+        $password = $_ENV['DB_PASSWORD'];
 
         try {
             $this->connection = new PDO(
