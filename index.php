@@ -1,10 +1,9 @@
 <?php
 $allowed_origins = [
     'https://scandi-test-fe.vercel.app',
-    'https://scandi-test-f5ew8s7c7h-mazens-projects-24ce9492.vercel.app',
+    'https://web-production-a0a1.up.railway.app',
     'http://localhost:3000',
     'http://localhost:8080',
-    'https://web-production-a0a1.up.railway.app',
 ];
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (in_array($origin, $allowed_origins)) {
