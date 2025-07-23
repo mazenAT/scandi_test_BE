@@ -4,8 +4,7 @@ $allowed_origins = [
     'https://scandi-test-f5ew8s7c7h-mazens-projects-24ce9492.vercel.app',
     'http://localhost:3000',
     'http://localhost:8080',
-    'https://scanditest.fwh.is',
-    'http://scanditest.fwh.is',
+    'https://web-production-a0a1.up.railway.app',
 ];
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (in_array($origin, $allowed_origins)) {
